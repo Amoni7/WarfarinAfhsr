@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <title>Warfarin Dose Plan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Input Interface -->
+    <div id="inputInterface" class="container">
+        <h1 id="title">Warfarin Dose Planner</h1>
+
+        <div class="language-selector">
+            <label for="languageSelect" id="language">Language:</label>
+            <select id="languageSelect">
+                <option value="en" selected id="english">English</option>
+                <option value="ar" id="arabic">Arabic</option>
+            </select>
+        </div>
+
+        <!-- Dropdown for selecting the starting day -->
+        <div class="start-day-selector">
+            <label for="startDay" id="selectday">Select Starting Day:</label>
+            <select id="startDay">
+                <option value="Monday" selected id="monday">Monday</option>
+                <option value="Tuesday" id="tuesday">Tuesday</option>
+                <option value="Wednesday" id="wednesday">Wednesday</option>
+                <option value="Thursday" id="thursday">Thursday</option>
+                <option value="Friday" id="friday">Friday</option>
+                <option value="Saturday" id="saturday">Saturday</option>
+                <option value="Sunday" id="sunday">Sunday</option>
+            </select>
+        </div>
+
+
+        <div class="dose-inputs">
+            <label for="day1" id="mon">Monday Dose:</label>
+            <input type="number" id="day1" placeholder= "Enter dose for Monday">
+
+            <label for="day2" id="tues">Tuesday Dose:</label>
+            <input type="number" id="day2" placeholder="Enter dose for Tuesday">
+           
+            <label for="day3" id="wed">Wednesday Dose:</label>
+            <input type="number" id="day3" placeholder="Enter dose for Wednesday">
+
+            <label for="day4" id="thurs">Thursday Dose:</label>
+            <input type="number" id="day4" placeholder="Enter dose for Thursday">
+
+            <label for="day5" id="fri">Friday Dose:</label>
+            <input type="number" id="day5" placeholder="Enter dose for Friday">
+
+            <label for="day6" id="sat">Saturday Dose:</label>
+            <input type="number" id="day6" placeholder="Enter dose for Saturday">
+
+            <label for="day7" id="sun">Sunday Dose:</label>
+            <input type="number" id="day7" placeholder="Enter dose for Sunday">
+        </div>
+
+        <div class="dose-inputs-buttons">
+            <button id="generateBtn">Dosing Plan</button>
+        </div>
+    </div>
+
+    <!-- Output Interface -->
+    <div id="outputInterface" class="container" style="display: none;">
+        <div id="pdfExportWrapper"></div>
+        <h1 id="dosingplan">Dosing Plan</h1>
+        <div id="tabletDiagram" class="tablet-diagram"></div>
+        <div class="dose-inputs-buttons">
+            <button id="resetBtn">Plan for Another Patient</button>
+        </div>
+        <button id="exportPdfBtn">Export as PDF</button>
+    </div>
+    <script src="script.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAJDDttm2VsaLkVof3NvR4CLvdXXAkhpd8",
+          authDomain: "warfarindosing-afhsr.firebaseapp.com",
+          projectId: "warfarindosing-afhsr",
+          storageBucket: "warfarindosing-afhsr.firebasestorage.app",
+          messagingSenderId: "263791916285",
+          appId: "1:263791916285:web:db9fb4a9f9eb44fe28fa94",
+          measurementId: "G-NX5SGW34S7"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
